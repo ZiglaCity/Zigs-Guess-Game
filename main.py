@@ -518,3 +518,85 @@ def return_to_phase_1():
 
     update_board()
 
+
+#define the third phasse which opens when the user clicks on Vs computer
+def open_phase_3():
+    global current_player, rounds_left, player1_score, player2_score, random_number
+    # Clear the window for Phase 2
+    for widget in phase_window.winfo_children():
+        widget.destroy()
+
+    phase_window.title("Vs Computer")
+    
+    random_number = random.randint(0, 9)
+    global check_button,vs_computer_guess, alert, vs_computer_guess_entry, status_var, rounds_left, player1_score_var, player2_score_var, rounds_left_var, current_turn_var, guess_entry
+    
+    status_var = tk.StringVar()
+    alert = tk.StringVar()
+    player1_score_var = tk.StringVar(value=f"{player1_name.capitalize()}: {player1_score}")
+    player2_score_var = tk.StringVar(value=f"{player2_name.capitalize()}: {player2_score}")
+    rounds_left_var = tk.StringVar(value=f"Rounds Left: {rounds_left}")
+    current_turn_var = tk.StringVar(value=f"Player: {current_player}'s Turn")
+    vs_computer_guess = tk.StringVar()
+
+    # Frame for Player Scores
+    score_frame = tk.Frame(phase_window)
+    score_frame.pack(pady=15)
+
+    score_label = tk.Label(score_frame, text="SCORES: ")
+    score_label.pack(side=tk.LEFT)
+    
+    player1_label = tk.Label(score_frame, textvariable=player1_score_var)
+    player1_label.pack(side=tk.LEFT)
+    
+    player2_label = tk.Label(score_frame, textvariable=player2_score_var)
+    player2_label.pack(side=tk.RIGHT)
+    
+    # Labels and Entries
+    rounds_left_label = tk.Label(phase_window, textvariable=rounds_left_var)
+    rounds_left_label.pack(pady=8)
+    
+    turn_label = tk.Label(phase_window, textvariable=current_turn_var)
+    turn_label.pack(pady=8)
+    
+    instruction_label = tk.Label(phase_window, text="Select a random number 0-9")
+    instruction_label.pack(pady=5)
+
+    vs_computer_frame = tk.Frame(phase_window)
+    vs_computer_frame.pack(pady=10)
+
+    p1_frame = tk.Frame(vs_computer_frame)
+    p1_frame.pack(side="left")
+
+    p1_label = tk.Label(p1_frame, text="Player1")
+    p1_label.pack(side="top")
+    
+    guess_entry = tk.Entry(p1_frame)
+    guess_entry.pack(side="bottom")
+
+    p2_frame = tk.Frame(vs_computer_frame)
+    p2_frame.pack(side="right")
+
+    p2_label = tk.Label(p2_frame, text="Computer")
+    p2_label.pack(side="top")
+
+    vs_computer_guess_entry = tk.Entry(p2_frame, textvariable=vs_computer_guess, state="readonly")
+    vs_computer_guess_entry.pack(side="bottom")
+
+    alert_label = tk.Label(phase_window, textvariable=alert, width=20)
+    alert_label.pack()
+    
+    check_button = tk.Button(phase_window, text="Check", command=check_vs_computer_guess)
+    check_button.pack(pady= 10)
+    
+    status_checker = tk.Entry(phase_window, width=30, textvariable=status_var, state="readonly", justify='center')
+    status_checker.pack(pady=5, padx=30)
+
+    next_round_button = tk.Button(phase_window, text="Next Round", command=reset_round)
+    next_round_button.pack(pady=15)
+    
+    exit_button = tk.Button(phase_window, text="Exit", command=return_to_phase_1)
+    exit_button.pack(pady=15)
+
+    #apply the styles to the widgets
+    apply_styles(phase_window)
