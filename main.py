@@ -67,6 +67,7 @@ spinbox_style = {
     "buttonuprelief": "groove"
 }
 
+
 #define a funciton which applies the styles to their respective widgets
 def apply_styles(widget):
     #Apply styles to all Button, Label, Entry, and Frame widgets
@@ -454,7 +455,6 @@ def open_phase_2():
     player2_label = tk.Label(score_frame, textvariable=player2_score_var)
     player2_label.pack(side=tk.RIGHT)
     
-    # Labels and Entries
     rounds_left_label = tk.Label(phase_window, textvariable=rounds_left_var)
     rounds_left_label.pack(pady=8)
     
