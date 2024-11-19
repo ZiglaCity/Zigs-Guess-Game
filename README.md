@@ -1,4 +1,4 @@
-🎮 Guess Game Application
+yo🎮 Guess Game Application
 
 A fun and interactive number guessing game built with Python! Test your luck and skills by guessing the randomly generated number within a certain range and a limited number of attempts.
 
@@ -37,6 +37,7 @@ git clone https://github.com/ZiglaCity/Zigs-Guess-Game.git
 Navigate to the project directory:
 
 cd Zigs-Guess-Game
+
 Run the application:
 
 python main.py
