@@ -102,3 +102,30 @@ def select_vs_computer():
 #define a function that will called when the settings button is clicked to allow users change some default settings
 def settings():
     open_phase_4()
+
+
+# a function which saves all the changes made by the user
+def save_changes():
+    global player1_name, player2_name, number_of_rounds, players_round
+    player1_name = pn1.get()
+    player2_name = pn2.get()
+    player2_name.capitalize()
+    player1_name.capitalize()
+    players_round = player1_name
+    number_of_rounds = no_rounds.get()
+
+
+#create a function to calculate the score of the players
+def update_score():
+    global player1_score, player2_score,pscore, current_player, pscore, player1_score_var, player2_score_var
+    calculated_score = max_score - trials
+    if current_player == player1_name:
+        player1_score += calculated_score
+        pscore = f"{player1_name.capitalize()}: {player1_score}"
+        player1_score_var.set(pscore)
+
+    else:
+        player2_score += calculated_score
+        pscore = f"{player2_name.capitalize()}: {player2_score}"
+        player2_score_var.set(pscore)
+
