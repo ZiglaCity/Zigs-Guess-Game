@@ -378,3 +378,40 @@ def gameOver():
     
     pass
     
+
+#define a function which handles the phase phase of the game i.e phase1
+def open_phase_1():
+    global phase_window
+    phase_window = tk.Tk()
+    phase_window.title("Zigla's Guess Game")
+    phase_window.geometry(f"{window_width}x{window_height}")
+    phase_window.resizable(False, False)
+
+    #define the widgets in phase1
+    welcome_label = tk.Label(phase_window, text="WELCOME TO ZIGLA'S GUESS GAME")
+    welcome_label.pack(pady=30)
+
+    game_mode_frame = mod_label = tk.Frame(phase_window)
+    game_mode_frame.pack(pady=50)
+
+    mod_label = tk.Label(game_mode_frame, text="SELECT GAME MODE")
+    mod_label.pack(pady=5)
+
+    two_players_button = tk.Button(game_mode_frame, text=" TWO PLAYERS", command=select_two_players)
+    two_players_button.pack(pady=20)
+
+    vs_computer_button = tk.Button(game_mode_frame, text="VS COMPUTER",command=select_vs_computer)
+    vs_computer_button.pack(pady=20)
+
+    settings_button = tk.Button(phase_window, text="SETTINGS", command=settings)
+    settings_button.pack(pady=15)
+
+    start_button = tk.Button(phase_window, text="START", command=start_game)
+    start_button.pack(pady=20)
+
+
+    #Apply styles to all widgets
+    apply_styles(phase_window)
+
+    phase_window.mainloop()
+
