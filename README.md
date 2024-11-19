@@ -26,10 +26,10 @@ Version: Python 3.x
 📋 How to Run
 
 1. Download the installer or run the executable file from the link below.
-2. 
 [link unavailable at the moment]
 
 or
+
 2. Clone this repository to your local machine:
 
 git clone https://github.com/ZiglaCity/Zigs-Guess-Game.git
