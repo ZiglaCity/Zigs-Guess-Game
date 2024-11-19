@@ -286,3 +286,14 @@ def check_vs_computer_guess():
         guess_entry.config(state="normal")
         vs_computer_guess_entry.delete(0, tk.END)
 
+
+#create a function that calls for a rematch in the gameover phase
+def rematch():
+    global player1_score,current_player, player2_score, rounds_left
+    start_game()
+
+    update_board()
+    rounds_left_var.set(f"Rounds Left: {rounds_left}")
+    player1_score_var.set(f"{player1_name.capitalize()}: {player1_score}")
+    player2_score_var.set(f"{player2_name.capitalize()}: {player2_score}")
+    current_turn_var.set(f"Player: {current_player.capitalize()}'s Turn")
