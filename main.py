@@ -17,3 +17,8 @@ message = ""
 rounds_left = number_of_rounds
 random_number = None
 game_mode = 2
+
+# Set a fixed window size
+window_width = 600
+window_height = 650
+
