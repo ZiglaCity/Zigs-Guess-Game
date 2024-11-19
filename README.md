@@ -1,4 +1,4 @@
-yo🎮 Guess Game Application
+🎮 Guess Game Application
 
 A fun and interactive number guessing game built with Python! Test your luck and skills by guessing the randomly generated number within a certain range and a limited number of attempts.
 
