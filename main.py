@@ -329,3 +329,52 @@ def reset_round():
         guess_entry.config(state="normal")
         vs_computer_guess_entry.delete(0, tk.END)
 
+
+#create a game over function which determines the winner
+def gameOver():
+    # Transition to Phase 4: Game Over screen
+    for widget in phase_window.winfo_children():
+        widget.destroy()
+
+    phase_window.title("Game Over")
+    
+    final_message = ""
+    if player1_score > player2_score:
+        final_message += f"{player1_name.capitalize()} wins!"
+    elif player2_score > player1_score:
+        final_message +=f"{player2_name.capitalize()} wins!"
+    else:
+        final_message += " It's a tie!"
+
+    p1 = tk.StringVar(value= f"{player1_name.capitalize()}: {player1_score}")
+    p2 = tk.StringVar(value= f"{player2_name.capitalize()}: {player2_score}")
+
+    game_over_label = tk.Label(phase_window, text = "Game Over!")
+    game_over_label.pack(pady=10)
+
+    #create a frame to keep both players final score in the gameover  phase
+    final_score = tk.Frame(phase_window)
+    final_score.pack(pady=20)
+
+    player1_score_label = tk.Label(final_score, textvariable=p1)
+    player1_score_label.pack(side="left", padx=5)
+
+    player2_score_label = tk.Label(final_score, textvariable=p2)
+    player2_score_label.pack(side="right", padx=5)
+    
+    final_label = tk.Label(phase_window, text=final_message)
+    final_label.pack(pady=20)
+
+    exit_button = tk.Button(phase_window, text="Exit", command=phase_window.quit)
+    exit_button.pack(pady=20)
+
+    rematch_button = tk.Button(phase_window, text="Rematch", command=rematch)
+    rematch_button.pack(pady=20)
+
+    home_button = tk.Button(phase_window, text="Main Menu", command=return_to_phase_1)
+    home_button.pack(pady=20)
+
+    apply_styles(phase_window)
+    
+    pass
+    
