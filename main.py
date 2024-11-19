@@ -423,3 +423,62 @@ def open_phase_1():
 
     phase_window.mainloop()
 
+
+#define the phase 2 which begins the game with two players
+def open_phase_2():
+    global current_player, rounds_left, player1_score, player2_score, random_number
+    # Clear the window for Phase 2
+    for widget in phase_window.winfo_children():
+        widget.destroy()
+
+    phase_window.title("Two-Player Game")
+    
+    random_number = random.randint(0, 9)
+    global check_button, status_var, rounds_left, player1_score_var, player2_score_var, rounds_left_var, current_turn_var, guess_entry
+    
+    status_var = tk.StringVar()
+    player1_score_var = tk.StringVar(value=f"{player1_name.capitalize()}: {player1_score}")
+    player2_score_var = tk.StringVar(value=f"{player2_name.capitalize()}: {player2_score}")
+    rounds_left_var = tk.StringVar(value=f"Rounds Left: {rounds_left}")
+    current_turn_var = tk.StringVar(value=f"Player: {current_player.capitalize()}'s Turn")
+    # Frame for Player Scores
+    score_frame = tk.Frame(phase_window)
+    score_frame.pack(pady=15)
+
+    score_label = tk.Label(score_frame, text="SCORES: ")
+    score_label.pack(side=tk.LEFT)
+    
+    player1_label = tk.Label(score_frame, textvariable=player1_score_var)
+    player1_label.pack(side=tk.LEFT)
+    
+    player2_label = tk.Label(score_frame, textvariable=player2_score_var)
+    player2_label.pack(side=tk.RIGHT)
+    
+    # Labels and Entries
+    rounds_left_label = tk.Label(phase_window, textvariable=rounds_left_var)
+    rounds_left_label.pack(pady=8)
+    
+    turn_label = tk.Label(phase_window, textvariable=current_turn_var)
+    turn_label.pack(pady=8)
+    
+    instruction_label = tk.Label(phase_window, text="Select a random number 0-9")
+    instruction_label.pack(pady=5)
+    
+    guess_entry = tk.Entry(phase_window)
+    guess_entry.pack(pady=10)
+    
+    check_button = tk.Button(phase_window, text="Check", command=check_guess)
+    check_button.pack(pady= 20)
+    
+    status_checker = tk.Entry(phase_window, width=30, textvariable=status_var, state="readonly", justify='center')
+    status_checker.pack(pady= 5)
+
+    next_round_button = tk.Button(phase_window, text="Next Round", command=reset_round)
+    next_round_button.pack(pady=20)
+    
+    exit_button = tk.Button(phase_window, text="Exit", command=return_to_phase_1)
+    exit_button.pack(pady=30)
+
+    #apply the styles to the widgets
+    apply_styles(phase_window)
+
