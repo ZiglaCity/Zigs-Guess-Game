@@ -330,6 +330,14 @@ def reset_round():
         vs_computer_guess_entry.delete(0, tk.END)
 
 
+#the start game phase which is to be called when the start button is clicked
+def start_game():
+    if game_mode == 2:
+        open_phase_2()
+    elif game_mode == 1:
+        open_phase_3()
+
+
 #create a game over function which determines the winner
 def gameOver():
     # Transition to Phase 4: Game Over screen
