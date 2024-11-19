@@ -84,3 +84,9 @@ def apply_styles(widget):
     # Recursively apply styles to all children
     for child in widget.winfo_children():
         apply_styles(child)
+
+
+#define the function to handle the command issued when the vs computer button is clicked
+def select_two_players():
+    global game_mode
+    game_mode = 2
