@@ -140,3 +140,7 @@ def update_board():
     current_player = player1_name
     random_number = random.randint(0, 9)
    
+#define a function which swiches turn after avery tirals 
+def switch_turn():
+    global current_player
+    current_player = player2_name if current_player == player1_name else player1_name
