@@ -66,3 +66,21 @@ spinbox_style = {
     "buttondownrelief": "groove",
     "buttonuprelief": "groove"
 }
+
+#define a funciton which applies the styles to their respective widgets
+def apply_styles(widget):
+    #Apply styles to all Button, Label, Entry, and Frame widgets
+    if isinstance(widget, tk.Button):
+        widget.config(**button_style)
+    elif isinstance(widget, tk.Label):
+        widget.config(**label_style)
+    elif isinstance(widget, tk.Entry):
+        widget.config(**entry_style)
+    elif isinstance(widget, tk.Frame):
+        widget.config(**frame_style)
+    elif isinstance(widget, tk.Spinbox):
+        widget.config(**spinbox_style)
+
+    # Recursively apply styles to all children
+    for child in widget.winfo_children():
+        apply_styles(child)
