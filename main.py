@@ -97,3 +97,8 @@ def select_vs_computer():
     global game_mode, player2_name
     game_mode = 1
     player2_name = "Computer"
+
+
+#define a function that will called when the settings button is clicked to allow users change some default settings
+def settings():
+    open_phase_4()
