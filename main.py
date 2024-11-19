@@ -129,3 +129,14 @@ def update_score():
         pscore = f"{player2_name.capitalize()}: {player2_score}"
         player2_score_var.set(pscore)
 
+
+#define a function which  updates the board including the scores for a new game
+def update_board():
+    global trials, status_var,player1_score,player2_score, rounds_left, random_number, current_player, guess_entry
+    trials = 0
+    player1_score = 0
+    player2_score = 0
+    rounds_left = number_of_rounds
+    current_player = player1_name
+    random_number = random.randint(0, 9)
+   
