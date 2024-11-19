@@ -17,8 +17,11 @@ Replay Option: Play multiple rounds without restarting the app.
 🛠️ Technologies Used
 
 Language: Python
+
 Framework: Tkinter
+
 Version: Python 3.x
+
 
 📋 How to Run
 
