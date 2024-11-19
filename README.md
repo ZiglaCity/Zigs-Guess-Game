@@ -70,13 +70,17 @@ Themes: Add visual themes for a more engaging experience.
 Contributions are welcome! If you'd like to improve this project:
 
 Fork the repository.
+
 Create a new branch:
+
 git checkout -b feature/your-feature-name
 
 Make your changes and commit them:
+
 git commit -m "Add your commit message here"
 
 Push to the branch:
+
 git push origin feature/your-feature-name
 
 Open a Pull Request.
