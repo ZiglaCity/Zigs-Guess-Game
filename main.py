@@ -600,3 +600,65 @@ def open_phase_3():
 
     #apply the styles to the widgets
     apply_styles(phase_window)
+
+
+def open_phase_4():
+    # Clear the window for Phase 1
+    for widget in phase_window.winfo_children():
+        widget.destroy()
+
+    phase_window.title("Settings")
+
+    global pn1, pn2, no_rounds
+    pn1 = tk.StringVar()
+    pn2 = tk.StringVar()
+    pn1.set(f"{player1_name.capitalize()}")
+    pn2.set(f"{player2_name.capitalize()}")
+    no_rounds = tk.IntVar()
+
+    # Recreate Phase 1 content
+    settings_label = tk.Label(phase_window, text="Remeber to Click the save button to apply the changes made")
+    settings_label.pack(pady=20)
+
+    change_player_name_label = tk.Label(phase_window, text="Change player names")
+    change_player_name_label.pack(pady=5)
+
+    player1_name_frame = tk.Frame(phase_window)
+    player1_name_frame.pack(pady=10)
+
+    player1_name_label = tk.Label(player1_name_frame, text="Input Player1 Name")
+    player1_name_label.pack(side="left")
+
+    player1_name_entry = tk.Entry(player1_name_frame, textvariable=pn1)
+    player1_name_entry.pack(side="right")
+
+    player2_name_frame = tk.Frame(phase_window)
+    player2_name_frame.pack(pady=10)
+
+    player2_name_label = tk.Label(player2_name_frame, text="Input Player2 Name")
+    player2_name_label.pack(side="left")
+
+    player2_name_entry = tk.Entry(player2_name_frame, textvariable=pn2)
+    player2_name_entry.pack(side="right")
+
+    no_rounds_frame = tk.Frame(phase_window)
+    no_rounds_frame.pack(pady=10)
+
+    no_rounds_label = tk.Label(no_rounds_frame, text="Number Of Rounds: ")
+    no_rounds_label.pack(side="left")
+
+    no_rounds_spinbox = tk.Spinbox(no_rounds_frame, values=(2, 4,6, 8, 10, 16, 32, 64, 1), textvariable=no_rounds)
+    no_rounds_spinbox.pack(side="right")
+
+    save_changes_button = tk.Button(phase_window, text="SAVE", command=save_changes)
+    save_changes_button.pack(pady=30)
+
+    main_menu_button = tk.Button(phase_window, text="MAIN MENU", command=return_to_phase_1)
+    main_menu_button.pack(pady=40)
+
+    #apply the styles to the widgets
+    apply_styles(phase_window)
+    
+
+# Start the game
+open_phase_1()
