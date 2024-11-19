@@ -297,3 +297,35 @@ def rematch():
     player1_score_var.set(f"{player1_name.capitalize()}: {player1_score}")
     player2_score_var.set(f"{player2_name.capitalize()}: {player2_score}")
     current_turn_var.set(f"Player: {current_player.capitalize()}'s Turn")
+
+
+#define a function which is connected to the Next round button and resets the game round
+def reset_round():
+    global current_player,guess, trials, players_round, rounds_left, random_number
+    rounds_left -= 1
+    players_round = player2_name if players_round == player1_name else player1_name
+    current_player = players_round
+    current_turn_var.set(f"Player: {current_player.capitalize()}'s Turn")
+    rounds_left_var.set(f"Rounds Left: {rounds_left}")
+    guess_entry.config(state='normal')
+    guess_entry.delete(0, tk.END)
+    check_button.config(state="normal")
+    random_number = random.randint(0, 9)
+    trials = 0
+    status_var.set("")
+
+    if rounds_left == 0:
+        return gameOver()
+           
+
+    if current_player == player2_name and game_mode == 1:
+        guess_entry.config(state="readonly")
+        computer_guess = random.randint(0, 9)
+        guess = computer_guess
+        msg = f"Computer Played {computer_guess}, Check!"
+        alert.set(msg)
+        vs_computer_guess.set(guess)
+    elif current_player == player1_name and game_mode == 1:
+        guess_entry.config(state="normal")
+        vs_computer_guess_entry.delete(0, tk.END)
+
