@@ -90,3 +90,10 @@ def apply_styles(widget):
 def select_two_players():
     global game_mode
     game_mode = 2
+
+
+#define the function to handle the command issued when the vs computer button is clicked
+def select_vs_computer():
+    global game_mode, player2_name
+    game_mode = 1
+    player2_name = "Computer"
