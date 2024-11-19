@@ -202,3 +202,87 @@ def check_guess():
             check_button.config(state="disabled")
     if rounds_left == 0:
             gameOver()
+
+
+#create a function to be called when the check button is called against the computer
+def check_vs_computer_guess():
+    global message, msg, difference,vs_computer_guess_entry, vs_computer_guess, computer_guess, check_button , trials, players_round, current_player, rounds_left, player1_score, pturn, current_turn_var, player2_score, guess_entry, status_var, random_number
+
+    if current_player == player1_name:
+        try:
+            guess = int(guess_entry.get())
+        except ValueError:
+            status_var.set("Invalid input!")
+            return
+    else:
+        guess = int(vs_computer_guess_entry.get())
+        msg = ""
+        alert.set(msg)
+        vs_computer_guess_entry.delete(0, tk.END)
+        
+    #increase the number of trials after each check
+    trials += 1
+
+    #set the conditions for both when the number of trials left is and is not zero and when the users gues is either too large, too small or close
+    if guess == random_number:
+        update_score()
+        message = f"Correct! {current_player.capitalize()} wins!"
+        pturn = f"Player: {current_player.capitalize()}'s Turn"
+        status_var.set(message)
+        #disable the entry box and check button until the next round button is clicked
+        guess_entry.config(state='readonly')
+        check_button.config(state="disabled")
+
+    else:
+        guess_entry.delete(0, tk.END)
+        difference = guess - random_number
+
+        if abs(difference) <= 2 and trials != 10:
+            switch_turn()
+            message = f"Very Close! {current_player.capitalize()} is next"
+            pturn = f"Player: {current_player.capitalize()}'s Turn"
+            current_turn_var.set(pturn)
+            status_var.set(message)
+
+        elif difference <= -3 and trials != 10:
+            switch_turn()
+            message = f"Too Small! {current_player.capitalize()} is next"
+            pturn = f"Player: {current_player.capitalize()}'s Turn"
+            current_turn_var.set(pturn)
+            status_var.set(message)
+
+        elif difference >= 3 and trials != 10:
+            switch_turn()
+            message = f"Too large! {current_player.capitalize()} is next"
+            pturn = f"Player: {current_player.capitalize()}'s Turn"
+            current_turn_var.set(pturn)
+            status_var.set(message)
+
+        else:
+            #make sure the players do not use more than ten trials in total since there are only ten digits
+            message = "Too many attemps! Begin Next Round!"
+            status_var.set(message)
+            #disable the entry box and check button until the next round button is clicked
+            guess_entry.config(state='readonly')
+            check_button.config(state="disabled")
+
+    if rounds_left == 0:
+            gameOver()
+
+    #disable the users entry when is it the computers turn and select and display computer's guess
+    if current_player == player2_name and guess != random_number:
+        guess_entry.config(state="readonly")
+        computer_guess = random.randint(0, 9)
+
+        #change the computers guess if it is the same wrong thing as player 1 guessed
+        while computer_guess == guess:
+            computer_guess = random.randint(0, 9)
+
+        guess = computer_guess
+        msg = f"Computer Played {computer_guess}, Check!"
+        alert.set(msg)
+        vs_computer_guess.set(guess)
+    elif current_player == player1_name:
+        guess_entry.config(state="normal")
+        vs_computer_guess_entry.delete(0, tk.END)
+
