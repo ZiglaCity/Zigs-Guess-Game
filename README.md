@@ -5,7 +5,7 @@ A fun and interactive number guessing game built with Python! Test your luck and
 
 🚀 Features
 
-Game Modes: Player against another oponent or play against Computer.
+Game Modes: Play against another oponent or play against Computer.
 
 Settings: Change default player names and number of rounds to play.
 
