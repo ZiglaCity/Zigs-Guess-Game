@@ -1,0 +1,2 @@
+Create an algorithm to make computer mode more difficult and competitive
+Update the setting phase so that a user can select what difficulty level to play against computer
